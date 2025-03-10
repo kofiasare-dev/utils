@@ -51,3 +51,12 @@ func StringToUint(i string) (parseInt uint) {
 func Blank(s string) bool {
 	return len(strings.TrimSpace(s)) == 0
 }
+
+func LeftPad(s string, length int, pad rune) string {
+	if len(s) >= length {
+		return s
+	}
+
+	padCount := length - len(s)
+	return strings.Repeat(string(pad), padCount) + s
+}
