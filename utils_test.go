@@ -1,6 +1,9 @@
 package utils
 
-import "testing"
+import (
+	"log"
+	"testing"
+)
 
 func TestBlank(t *testing.T) {
 	aString := "not blank"
@@ -21,4 +24,15 @@ func TestBlank(t *testing.T) {
 	if Blank(spaceString) == false {
 		t.Error("Expected Blank() to return true for a string with only spaces, but it returned false")
 	}
+}
+
+func TestMapWithIndex(t *testing.T) {
+	wa := []int{0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+
+	r := MapWithIndex(wa, func(d, i int) int {
+		println(d, i)
+		return d + i
+	})
+
+	log.Print(r)
 }

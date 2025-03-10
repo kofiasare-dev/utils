@@ -39,6 +39,16 @@ func Map[T any, U any](list []T, mapFunc func(T) U) (mapped []U) {
 
 }
 
+func MapWithIndex[T any, U any](list []T, mapFunc func(T, int) U) (mapped []U) {
+	mapped = make([]U, len(list))
+	for i, v := range list {
+		mapped[i] = mapFunc(v, i)
+	}
+
+	return
+
+}
+
 func StringToUint(i string) (parseInt uint) {
 	parsedInt, err := strconv.ParseUint(i, 10, 32)
 	if err != nil {
