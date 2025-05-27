@@ -36,3 +36,9 @@ func TestMapWithIndex(t *testing.T) {
 
 	log.Print(r)
 }
+
+func TestMapSum(t *testing.T) {
+	n := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+	log.Print(Sum(n))
+}

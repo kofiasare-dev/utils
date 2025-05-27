@@ -7,6 +7,7 @@ import (
 	"hash"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func SecureRandomHex(length int) string {
@@ -69,4 +70,38 @@ func LeftPad(s string, length int, pad rune) string {
 
 	padCount := length - len(s)
 	return strings.Repeat(string(pad), padCount) + s
+}
+
+func Pop[T any](list []T) (popped T) {
+	if len(list) == 0 {
+		panic("Cannot pop from an empty slice")
+	}
+
+	popped = list[len(list)-1]
+
+	return
+}
+
+type Number interface{ int | float64 }
+
+func Sum[T Number](list []T) (sum T) {
+	for _, digit := range list {
+		sum += digit
+	}
+
+	return
+}
+
+func ToDate(layout, date string) (parsedDate *time.Time) {
+	if Blank(date) {
+		return
+	}
+
+	t, err := time.Parse(layout, date)
+	if err != nil {
+		return
+	}
+
+	return &t
+
 }
